@@ -283,6 +283,10 @@ class IngestPanel(QWidget):
 			self.footage.remove(item.text())
 			self.shotConfig.pop(item.text(), None)
 
+			read, _ = self.reads.pop(item.text())
+
+			nuke.delete(read)
+
 	def handleMappingImport(self):
 		file = nuke.getFilename('Choose mapping config file', pattern='*.csv')
 
